@@ -31,13 +31,7 @@
 							<p class="text-white-50">Sign in to start your session</p>							
 						</div>
 						<div class="p-30 rounded30 box-shadowed b-2 b-dashed">
-
-                            @if (session('status'))
-                                <div class="mb-4 font-medium text-sm text-green-600">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
-
+                            
                             <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
                                 @csrf								
                                 <div class="form-group">
