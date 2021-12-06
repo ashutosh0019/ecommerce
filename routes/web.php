@@ -3,20 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\Frontend\IndexController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::group(['prefix'=>'admin','middleware'=>['admin:admin']], function(){
     Route::get('/login',[AdminController::class,'loginForm']);
@@ -35,6 +23,10 @@ Route::post('/admin/profile/store',[AdminProfileController::class,'AdminProfileS
 Route::get('/admin/change/password',[AdminProfileController::class,'AdminChangePassword'])->name('admin.change.password');
 Route::post('/admin/change/password',[AdminProfileController::class,'AdminUpdateChangePassword'])->name('admin.change.password');
 
+
+
+//user all route
+Route::get('/', [IndexController::class, 'index']);
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
