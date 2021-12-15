@@ -1,15 +1,34 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('frontend.main_master')
+@section('content')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+<div class="body-content">
+    <div class="container">       
+        <div class="col-md-2">
+            <br>
+            <img class="card-img-top" src="{{ (!empty($user->profile_photo_path))? 
+										url('upload/user_images/'.$user->profile_photo_path):
+                                        url('upload/no_image.jpg') }}" style="width:150px; height:150px; border-radius:50%; margin-left:5px;" alt="User Avatar">
+                                        <br><br>
+                <ul class="list-group list-group-flush">
+                  <a href="{{route('dashboard')}}" class="btn btn-primary btn-sm btn-block">Home</a>
+                  <a href="{{route('user.profile')}}" class="btn btn-primary btn-sm btn-block">Profile Update</a>  
+                  <a href="{{route('change.password')}}" class="btn btn-primary btn-sm btn-block">Change Password</a>
+                  <a href="{{route('user.logout')}}" class="btn btn-danger btn-sm btn-block">Logout</a>
+                </ul>
+        </div>
+
+        <div class="col-md-2">
+            
+        </div>
+        <div class="col-md-6">
+
+            <div class="card">
+                <h3 class="text-center"><span class="text-danger">Hii...</span><strong>{{Auth::user()->name}}</strong></h3>
             </div>
+            
         </div>
     </div>
-</x-app-layout>
+</div>
+
+
+@endsection
