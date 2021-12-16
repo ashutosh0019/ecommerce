@@ -29,7 +29,7 @@ Route::post('/admin/change/password',[AdminProfileController::class,'AdminUpdate
 Route::prefix('brand')->group(function()
 {
    Route::get('/view', [BrandController::class, 'BrandView'])->name('all.brand');
-
+   Route::post('/store', [BrandController::class, 'BrandStore'])->name('brand.store');
 });
 
 //user all route

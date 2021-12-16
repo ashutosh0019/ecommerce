@@ -2,124 +2,121 @@
 @section('admin')
 
 <div class="container-full">
-		<!-- Content Header (Page header) -->
-		<div class="content-header">
-			<div class="d-flex align-items-center">
-				<div class="mr-auto">
-					<h3 class="page-title">Data Tables</h3>
-					<div class="d-inline-block align-items-center">
-						<nav>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Tables</li>
-								<li class="breadcrumb-item active" aria-current="page">Data Tables</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-
+	
 		<!-- Main content -->
 		<section class="content">
 		  <div class="row">
 			  
-			<div class="col-12">
+			<div class="col-8">
 				<div class="box">
 					<div class="box-header">						
-						<h4 class="box-title">Complex headers (rowspan and colspan)</h4>
+						<h4 class="box-title">Brand List</h4>
 					</div>
 					<div class="box-body">
 						<div class="table-responsive">
 							<div id="complex_header_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                <div class="row"><div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_length" id="complex_header_length">
-                                        <label>Show <select name="complex_header_length" aria-controls="complex_header" class="form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select> entries</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div id="complex_header_filter" class="dataTables_filter">
-                                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="complex_header"></label></div>
-                                    </div>
-                                </div>
+                                                               
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <table id="complex_header" class="table table-striped table-bordered display dataTable" style="width: 100%;" role="grid" aria-describedby="complex_header_info">
                                             <thead>
                                                 <tr>
-                                                    <th rowspan="1" colspan="1">Name</th>
-                                                    <th rowspan="1" colspan="1">Position</th>
-                                                    <th rowspan="1" colspan="1">Salary</th>
-                                                    <th rowspan="1" colspan="1">Office</th>
-                                                    <th rowspan="1" colspan="1">Extn.</th>
-                                                    <th rowspan="1" colspan="1">E-mail</th>
+                                                    <th rowspan="1" colspan="1">Brand English</th>
+                                                    <th rowspan="1" colspan="1">Brand Hindi</th>
+                                                    <th rowspan="1" colspan="1">Image</th>
+                                                    <th rowspan="1" colspan="1">Action</th>
+                                                   
                                                 </tr>
                                             </thead>
-                                            <tbody>							
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Airi Satou</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>33</td>
-                                                    <td>2008/11/28</td>
-                                                    <td>$162,700</td>
+                                            <tbody>	
+                                                @foreach($brand as $item)						
+                                                <tr role="row" >
+                                                    <td>{{$item->brand_name_en}}</td>
+                                                    <td>{{$item->brand_name_hin}}</td>
+                                                    <td>
+                                                        <img src="{{asset($item->brand_image)}}" style="width:70px; height:40px;">
+                                                    </td>
+                                                    <td>
+                                                        <a href="" class="btn btn-info">Edit</a>
+                                                        <a href="" class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                   
                                                 </tr>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">AShutosh</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>33</td>
-                                                    <td>2008/11/28</td>
-                                                    <td>$162,700</td>
-                                                </tr>
+                                                @endforeach
+                                                
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th rowspan="1" colspan="1">Name</th>
-                                                    <th rowspan="1" colspan="1">Position</th>
-                                                    <th rowspan="1" colspan="1">Salary</th>
-                                                    <th rowspan="1" colspan="1">Office</th>
-                                                    <th rowspan="1" colspan="1">Extn.</th>
-                                                    <th rowspan="1" colspan="1">E-mail</th>
-                                                </tr>
-                                            </tfoot>
+                                            
 							            </table>
                         
                         
                                     </div>
-                                </div>
-
+                                </div>                
                     
-                    
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-5">
-                                        <div class="dataTables_info" id="complex_header_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-7">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="complex_header_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button page-item previous disabled" id="complex_header_previous">
-                                                    <a href="#" aria-controls="complex_header" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                </li>                                              
-                                                
-                                                <li class="paginate_button page-item next" id="complex_header_next">
-                                                    <a href="#" aria-controls="complex_header" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                        
                             </div>
 						</div>
 					</div>
 				</div>
 			</div>		
 			<!-- /.col -->
+
+            <!-- ---------add brand ----------- -->
+
+            <div class="col-4">
+				<div class="box">
+					<div class="box-header">						
+						<h4 class="box-title">Add Brand</h4>
+					</div>
+					<div class="box-body">
+						<div class="table-responsive">
+							
+                            <form method="post" action="{{route('brand.store')}}" enctype='multipart/form-data'>
+                                @csrf
+                                
+                                        
+                                <div class="form-group">
+                                <h5>Brand Name English<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="" name="brand_name_en" class="form-control"> 
+                                        @error('brand_name_en')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            
+                                <div class="form-group">
+                                <h5>Brnad Name Hindi<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="" name="brand_name_hin" class="form-control"> 
+                                        @error('brand_name_hin')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            
+                                <div class="form-group">
+                                <h5>Brand Image<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="file" id="" name="brand_image" class="form-control"> 
+                                        @error('brand_image')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                                
+                                <div class="text-xs-right">
+                                    <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Brand">
+                                </div>
+                                        
+                                    
+
+                            </form>              
+
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
 		  </div>
 		  <!-- /.row -->
 		</section>
