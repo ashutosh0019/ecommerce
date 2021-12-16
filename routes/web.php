@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Models\User;
 
 
@@ -14,7 +15,7 @@ Route::group(['prefix'=>'admin','middleware'=>['admin:admin']], function(){
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
+})->name('admin.dashboard');
 
 //admin route
 Route::get('/admin/logout',[AdminController::class,'destroy'])->name('admin.logout');
@@ -24,7 +25,12 @@ Route::post('/admin/profile/store',[AdminProfileController::class,'AdminProfileS
 Route::get('/admin/change/password',[AdminProfileController::class,'AdminChangePassword'])->name('admin.change.password');
 Route::post('/admin/change/password',[AdminProfileController::class,'AdminUpdateChangePassword'])->name('admin.change.password');
 
+//admin brand all route 
+Route::prefix('brand')->group(function()
+{
+   Route::get('/view', [BrandController::class, 'BrandView'])->name('all.brand');
 
+});
 
 //user all route
 Route::get('/', [IndexController::class, 'index']);
