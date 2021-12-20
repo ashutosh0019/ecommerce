@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class SubCategory extends Model
 {
     use HasFactory;
     protected $fillable= [
-        'brand_name_en',
-        'brand_name_hin',
-        'brand_slug_en',
-        'brand_slug_hin',
-        'brand_image',
+        'category_id',
+        'subcategory_name_en',
+        'subcategory_name_hin',
+        'subcategory_slug_en',
+        'subcategory_slug_hin',
     ];
 }
